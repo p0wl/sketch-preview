@@ -132,7 +132,7 @@ function getExportOptions(output, scale) {
   return {
     "output": output,
     "save-for-web": false,
-    "formats": "tiff",
+    "formats": "png",
     "use-id-for-name": true,
     "scales": scale
   }
@@ -145,7 +145,7 @@ function getImageFiles(artboard) {
   var sortedFiles = []
   for (var i = 0; i < files.length; i++) {
     var file = files[i]
-    if (!file.endsWith('.tiff')) { continue }
+    if (!file.endsWith('.png')) { continue }
     if (file.startsWith(artboardId)) {
       logger.debug("found current preview file: " + file)
       sortedFiles.unshift(file)
