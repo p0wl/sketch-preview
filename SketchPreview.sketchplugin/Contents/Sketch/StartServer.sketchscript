@@ -1,0 +1,24 @@
+@import 'lib/common.js'
+
+coscript.shouldKeepAround = true
+
+var PREVIEW_DIRECTORY_NAME = "com.marcisme.sketch-preview"
+
+function onRun(context) {
+  var directory = getPreviewDirectory()
+  var command = "pushd " + directory + "; python -m SimpleHTTPServer 8089; popd"
+  runCommand("/bin/bash", ["-c", command])
+}
+
+function getPreviewDirectory() {
+  var fileManager = [NSFileManager defaultManager]
+  var cachesURL = [[fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject]
+  return [[cachesURL URLByAppendingPathComponent:PREVIEW_DIRECTORY_NAME] path]
+}
+
+function runCommand(command, args) {
+  var task = NSTask.alloc().init();
+  task.setLaunchPath_(command);
+  task.arguments = args;
+  task.launch();
+}

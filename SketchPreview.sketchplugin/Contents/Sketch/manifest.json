@@ -83,12 +83,18 @@
     "identifier": "toggle-auto-preview-command",
     "shortcut": "cmd ctrl p",
     "script": "ToggleAutoPreview.sketchscript"
+  }, {
+    "name": "Start Preview Server",
+    "identifier": "start-preview-server-command",
+    "shortcut": "cmd option ctrl p",
+    "script": "StartServer.sketchscript"
   }],
   "menu": {
     "items": [
       "preview-command",
       "preview-setup-command",
-      "toggle-auto-preview-command"
+      "toggle-auto-preview-command",
+      "start-preview-server-command"
     ],
     "isRoot": false
   }
