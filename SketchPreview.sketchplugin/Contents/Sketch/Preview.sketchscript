@@ -103,9 +103,15 @@ function writeAndOpenPreviewFile(previewTarget, doc) {
 
   var files = getImageFiles(previewTarget)
 
-  var previewFile = getPreviewFilePath(files.shift())
+  var previewFileName = files.shift()
+  var previewFile = getPreviewFilePath(previewFileName)
   logger.debug("opening " + previewFile)
   openPreviewFile(previewFile, doc)
+
+  var latestFile = getPreviewDirectory() + "/latest"
+  var nsPreviewFileName = [NSString stringWithFormat:"%@", previewFileName]
+
+  [[NSFileManager defaultManager] createFileAtPath:latestFile contents:nsPreviewFileName attributes:nil]
 
   for (var i = 0; i < files.length; i++) {
     var file = files[i]
